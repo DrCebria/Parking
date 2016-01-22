@@ -15,14 +15,9 @@ public class Parking {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
-        System.out.println("he cambiado esto");
+        Coche c=new Coche("25262", "adgdsa", "Corti");
+        System.out.println(c.getTipo());      
+        
     }
     
 }
