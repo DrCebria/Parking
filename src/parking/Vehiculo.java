@@ -9,11 +9,11 @@ package parking;
  *
  * @author daw1
  */
-public class Vehiculos {
-        private String matricula, modelo, color, nif_dueno;
-    private int telefono;
+public class Vehiculo {
+    protected String matricula, modelo, color, nif_dueno;
+    protected Integer telefono;
 
-    public Vehiculos (String matricula, String nif_dueno) {
+    public Vehiculo (String matricula, String nif_dueno) {
         this.matricula = matricula;
         this.nif_dueno = nif_dueno;
     }
@@ -54,7 +54,12 @@ public class Vehiculos {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public boolean setTelefono(int telefono) {
+        boolean a=true;
+        if((599999999<telefono)&&(telefono<799999999)){
         this.telefono = telefono;
+        return a;}
+        a=false;
+        return a;
     }
 }

@@ -5,9 +5,20 @@
  */
 package parking;
 
-public class Moto extends Vehiculos{
-    
+public class Moto extends Vehiculo{
+    protected Integer nruedas;
 
+    public Moto(String matricula, String nif_dueno) {
+        super(matricula, nif_dueno);
+    }
+
+    public Integer getNruedas() {
+        return nruedas;
+    }
+
+    public void setNruedas(Integer nruedas) {
+        this.nruedas = nruedas;
+    }
 
     
 }

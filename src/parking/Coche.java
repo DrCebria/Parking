@@ -5,23 +5,23 @@
  */
 package parking;
 
-public class Coche extends Vehiculos{
-    private String tipo;
+public class Coche extends Vehiculo{
+    protected String tipoc;
 
     public Coche( String matricula, String nif_dueno, String tipo) {
         super(matricula, nif_dueno);
         if (tipo.equals("Corto")|tipo.equals("Largo"))       
-        this.tipo = tipo;
+        this.tipoc = tipo;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoc() {
+        return tipoc;
     }
 
-    public boolean setTipo(String tipo) {
+    public boolean setTipoc(String tipo) {
         boolean a=false;
         if(tipo.equals("Corto")|tipo.equals("Largo")){
-        this.tipo = tipo;
+        this.tipoc = tipo;
         a=true;
         return a;
         }

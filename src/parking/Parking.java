@@ -5,9 +5,8 @@
  */
 package parking;
 
-/**
- *
- * @author daw1
+/*  en la clase vehiculo falta String toString() que concatena los datos del vehículo segun formato:
+"6785-FLM Seat Ibiza azul"
  */
 public class Parking {
 
@@ -15,8 +14,8 @@ public class Parking {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Coche c=new Coche("25262", "adgdsa", "Corti");
-        System.out.println(c.getTipo());      
+        Coche c=new Coche("25262", "adgdsa", "Corto");
+        System.out.println(c.getTipoc());      
         
     }
     
