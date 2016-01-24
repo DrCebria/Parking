@@ -59,9 +59,11 @@ Precio: 35 euros (solo se mostrará si está ocupada por un vehículo)*/
         }
         else{
             if (v instanceof Coche){
-                
-            }
-                
+                Coche c= (Coche) v;
+               if (c.getTipoc().equals("Corto")){
+                   
+               } 
+            } 
         }
         return precio;
     }
