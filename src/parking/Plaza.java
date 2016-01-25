@@ -45,8 +45,8 @@ public class Plaza {
         return tipov;
     }
 
-    public void setTipov(Character tipo) {
-        this.tipov = tipo;
+    public void setTipov(Character tipov) {
+        this.tipov = tipov;
     }
     /*int precio() que calcula cuánto se paga según tipo de vehículo: Si es moto 25€, si es coche
      corto 40€ y si es coche largo 55€. Si el sótano es el segundo se restan 5€.
@@ -55,7 +55,7 @@ public class Plaza {
 
     public Integer calculaPrecio(Vehiculo v) {
         int precio = 0;
-        if (tipov.equals("M")) {
+        if (tipov.equals('M')) {
             precio = 25;
         } else {
             if (v instanceof Coche) {
@@ -77,15 +77,19 @@ public class Plaza {
      Precio: 35 euros (solo se mostrará si está ocupada por un vehículo)*/
 
     @Override
-    public String toString() {
-        String text;
-        text = ("Número Plaza: " + getNplaza() +" "+ "Sótano: "+ getSotano());
-        if (v!=null){
-            text.concat("\n"+v.toString());
+    public String toString(){
+        String text="Num Plaza: " +nplaza+" Sótano: "+sotano+"\n";
+        if (v==null){
+            text=text.concat("No hay vehiculo en esta plaza");
+            
         }
         else{
-            text.concat("\n+plaza vacía");
+            text=text.concat(v.toString());
+            
         }
-        return text;
+        
+       return text;
     }
+        
+    
 }
