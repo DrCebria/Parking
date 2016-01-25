@@ -10,16 +10,15 @@ package parking;
  */
 public class Parking {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Moto c=new Moto("2653-G", "35597712Z");
-        
-       // System.out.println(c.toString());      
-        Plaza p=new Plaza(35, "Primero");
+        Coche c=new Coche ("2653-G", "35597712Z", "Largo");
+        int precio=0;
+       System.out.println(c.toString());      
+        Plaza p=new Plaza(35, "Segundo");
         p.setVehiculo(c);
-        System.out.println(p.toString());
+        p.setTipov('C');
+        precio= p.calculaPrecio(c);
+        System.out.println(p.toString()+"\n"+"Precio: "+precio+" €");
     }
     
 }

@@ -54,10 +54,10 @@ public abstract class Vehiculo {
         a=false;
         return a;
     }
-    @Override
-    public String toString(){
-        String texto;
-        texto=(getMatricula()+" "+getModelo()+" "+ getColor());
-        return texto;
-    }
+@Override
+
+public String toString(){
+    return matricula+" "+modelo+" "+color;
+}
+    
 }
