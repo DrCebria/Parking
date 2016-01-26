@@ -6,7 +6,7 @@
 package GestionParking;
 
 public class Coche extends Vehiculo{
-    protected String tipoc;
+    private String tipoc;
 
     public Coche( String matricula, String nif_dueno, String tipo) {
         super(matricula, nif_dueno);

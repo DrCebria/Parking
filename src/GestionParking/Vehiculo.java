@@ -2,8 +2,8 @@
 package GestionParking;
 
 public abstract class Vehiculo {
-    protected String matricula, modelo, color, nif_dueno;
-    protected Integer telefono;
+    private String matricula, modelo, color, nif_dueno;
+    private Integer telefono;
 
     public Vehiculo (String matricula, String nif_dueno) {
         this.matricula = matricula;

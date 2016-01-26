@@ -3,10 +3,10 @@ package GestionParking;
 
 public class Plaza {
 
-    protected Vehiculo v;
-    protected Integer sotano;
-    protected Integer nplaza;
-    protected Character tipov;
+    private Vehiculo v;
+    private Integer sotano;
+    private Integer nplaza;
+    private Character tipov;
 
     public Plaza(Integer nplaza, Integer sotano) {
         this.nplaza = nplaza;

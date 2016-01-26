@@ -6,7 +6,7 @@
 package GestionParking;
 
 public class Moto extends Vehiculo{
-    protected Integer nruedas;
+    private Integer nruedas;
 
     public Moto(String matricula, String nif_dueno) {
         super(matricula, nif_dueno);

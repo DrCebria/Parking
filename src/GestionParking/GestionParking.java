@@ -13,7 +13,8 @@ public class GestionParking {
         precio= p.calculaPrecio(c);
         System.out.println(p.toString()+"\n"+"Precio: "+precio+" €");
     */
-           
+      Parking parking = new Parking ("Parking to guapo");
+        
     }
     
 }
