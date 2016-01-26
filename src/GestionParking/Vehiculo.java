@@ -1,5 +1,5 @@
 
-package parking;
+package GestionParking;
 
 public abstract class Vehiculo {
     protected String matricula, modelo, color, nif_dueno;

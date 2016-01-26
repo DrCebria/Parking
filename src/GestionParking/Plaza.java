@@ -1,18 +1,14 @@
-/*atributos: vehiculo que alquila la plaza, n? de plaza, sótano donde se encuentra, tipo 'C' para coche y 'M'
- para moto.
- métodos: constructor con n? plaza y sótano
- get() y set() de cada atributo.
- */
-package parking;
+
+package GestionParking;
 
 public class Plaza {
 
     protected Vehiculo v;
-    protected String sotano;
+    protected Integer sotano;
     protected Integer nplaza;
     protected Character tipov;
 
-    public Plaza(Integer nplaza, String sotano) {
+    public Plaza(Integer nplaza, Integer sotano) {
         this.nplaza = nplaza;
         this.sotano = sotano;
     }
@@ -33,11 +29,11 @@ public class Plaza {
         this.nplaza = nplaza;
     }
 
-    public String getSotano() {
+    public Integer getSotano() {
         return sotano;
     }
 
-    public void setSotano(String sotano) {
+    public void setSotano(Integer sotano) {
         this.sotano = sotano;
     }
 
