@@ -66,9 +66,10 @@ public class Parking {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    /*String alquilar(Vehiculo vehiculo) que deberá recorrer la colección de plazas, según el tipo de
-     vehiculo, buscando una libre y asociarle el vehiculo. El método devolverá el n? de plaza asignada,
-     si no hay ninguna plaza libre devolverá null*/
+
+/*String alquilar(Vehiculo vehiculo) que deberá recorrer la colección de plazas, según el tipo de
+vehiculo, buscando una libre y asociarle el vehiculo. El método devolverá el n? de plaza asignada,
+si no hay ninguna plaza libre devolverá null*/
 
     public Integer alquilar(Vehiculo v) {
         Iterator<Integer> it = listaPlaza.keySet().iterator();
@@ -86,6 +87,9 @@ public class Parking {
         }
         return null;
     }
+/*int darBaja(int numPlaza), buscará la plaza pasada como parámetro y si estaba ocupada por un
+vehiculo borrará ese dato y devolverá 0, en caso contrario devolverá 1 si no existe la plaza ó 2 si
+no estaba ocupada.*/
 
     public Integer darBaja(Integer numPlaza) {
         Iterator<Integer> it = listaPlaza.keySet().iterator();
@@ -104,7 +108,9 @@ public class Parking {
         return 2;
 
     }
-
+/*List<Plaza> listarPlazas(String estado, char tipoVehiculo), generará un listado de plazas
+según el tipo pasado por parámetro (estado será: "libres" u "ocupadas", y tipoVehiculo será: 'C' ó 'M')*/ 
+    
     public List<Plaza> listarPlazas(String estado, char tipov) {
         List<Plaza> listarPlazas = new ArrayList();
         Iterator<Integer> it = listaPlaza.keySet().iterator();
@@ -120,10 +126,16 @@ public class Parking {
         }
         return listarPlazas;
     }
-
+/*int ganancias(), calculará el dinero que gana el parking según todas las plazas que tiene
+alquiladas, es decir ocupadas. (Para obtenerlas usará el método listarPlazas())*/
     public Integer ganancias() {
-        int total;
-        total=listarPlazas("ocupadas", 'M').size()+;
+        int total=0;
+        for(Plaza p : listarPlazas("ocupadas", 'M')) {
+            total = total + p.calculaPrecio(p.getVehiculo());
+        }
+        for(Plaza p : listarPlazas("ocupadas", 'C')) {
+            total = total + p.calculaPrecio(p.getVehiculo());
+        }
         
         return total;
     }
