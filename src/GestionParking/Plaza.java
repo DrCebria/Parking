@@ -8,7 +8,7 @@ public class Plaza {
     private Integer nplaza;
     private Character tipov;
 
-    public Plaza(Integer nplaza, Integer sotano) {
+    public Plaza(Integer sotano, Integer nplaza) {
         this.nplaza = nplaza;
         this.sotano = sotano;
     }
@@ -74,13 +74,13 @@ public class Plaza {
 
     @Override
     public String toString(){
-        String text="Num Plaza: " +nplaza+" Sótano: "+sotano+"\n";
+        String text="Sótano: "+sotano+" Num Plaza: " +nplaza;
         if (v==null){
-            text=text.concat("No hay vehiculo en esta plaza");
-            
+            text=text.concat(" No hay vehiculo en esta plaza\n");
+      
         }
         else{
-            text=text.concat(v.toString());
+            text=text.concat(" "+v.toString());
             
         }
         
