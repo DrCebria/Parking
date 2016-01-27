@@ -15,14 +15,21 @@ public class Parking {
         this.nombreParking = nombreParking;
         String SNN;
         Plaza p1 = new Plaza(1, 1);
+        p1.setTipov('C');
         Plaza p2 = new Plaza(1, 2);
+        p2.setTipov('C');
         Plaza p3 = new Plaza(1, 3);
+        p3.setTipov('C');
         Plaza p4 = new Plaza(1, 4);
+        p4.setTipov('C');
         Plaza p5 = new Plaza(2, 1);
         p5.setTipov('C');
         Plaza p6 = new Plaza(2, 2);
+        p6.setTipov('C');
         Plaza p7 = new Plaza(2, 3);
+        p7.setTipov('C');
         Plaza p8 = new Plaza(2, 4);
+        p8.setTipov('M');
         Coche c1 = new Coche("2653-G", "35597712Z", "Largo");
         p5.setVehiculo(c1);
         listaPlaza.put(11, p1);
@@ -64,17 +71,61 @@ public class Parking {
      si no hay ninguna plaza libre devolverá null*/
 
     public Integer alquilar(Vehiculo v) {
-        Iterator <Integer> it = listaPlaza.keySet().iterator();
+        Iterator<Integer> it = listaPlaza.keySet().iterator();
+
         while (it.hasNext()) {
             Integer SNN = it.next();
             Plaza p = listaPlaza.get(SNN);
-            
-        if (p.getTipov() == 'C' && v instanceof Coche && p.getVehiculo()==null
-          || p.getTipov()== 'M' && v instanceof Moto && p.getVehiculo()==null){
-            return SNN;
-        
+
+            if (p.getTipov() == 'C' && v instanceof Coche && p.getVehiculo() == null
+                    || p.getTipov() == 'M' && v instanceof Moto && p.getVehiculo() == null) {
+                p.setVehiculo(v);
+                return SNN;
+
+            }
         }
-        } return null;
+        return null;
+    }
+
+    public Integer darBaja(Integer numPlaza) {
+        Iterator<Integer> it = listaPlaza.keySet().iterator();
+        while (it.hasNext()) {
+            Integer SNN = it.next();
+            Plaza p = listaPlaza.get(SNN);
+            if (numPlaza == SNN) {
+                if (p.getVehiculo() != null) {
+                    p.setVehiculo(null);
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
+        }
+        return 2;
+
+    }
+
+    public List<Plaza> listarPlazas(String estado, char tipov) {
+        List<Plaza> listarPlazas = new ArrayList();
+        Iterator<Integer> it = listaPlaza.keySet().iterator();
+        while (it.hasNext()) {
+            Integer SNN = it.next();
+            Plaza p = listaPlaza.get(SNN);
+            if (p.getTipov() == tipov && p.getVehiculo() == null && estado.equals("libres")) {
+                listarPlazas.add(p);
+            }
+            if (p.getTipov() == tipov && p.getVehiculo() != null && estado.equals("ocupadas")) {
+                listarPlazas.add(p);
+            }
+        }
+        return listarPlazas;
+    }
+
+    public Integer ganancias() {
+        int total;
+        total=listarPlazas("ocupadas", 'M').size()+;
+        
+        return total;
     }
 
 }
