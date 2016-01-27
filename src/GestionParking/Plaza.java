@@ -63,7 +63,7 @@ public class Plaza {
                 }
             }
         }
-        if (this.sotano.equals("Segundo")) {
+        if (sotano == 2) {
             precio = precio - 5;
         }
         return precio;
