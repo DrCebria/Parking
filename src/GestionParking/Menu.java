@@ -46,3 +46,9 @@ op3.ejecutaMetodo();
 break;
 }
 }
+
+} //catch(Exception error) 
+//{ 
+///System.out.println("genero error: "+error); 
+//} 
+} 
