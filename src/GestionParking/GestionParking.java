@@ -19,8 +19,8 @@ public class GestionParking {
 //1
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido a la gestión del Parking:\n");
-        int menu, numeroplaza=0, resultadobaja, ganancias;
-        String matricula, dni, tipovehiculo, tipocoche;
+        int menu, resultadobaja, gananciastotales;
+        String matricula,  numeroplaza,dni, tipovehiculo, tipocoche;
         do {
             System.out.println("\t\t|Menú principal\t|\n"
                     + "\t|1. Alquilar una plaza \t\t|\n"
@@ -36,21 +36,22 @@ public class GestionParking {
                 dni = sc.next();
                 System.out.println("Es moto o coche?");
                 tipovehiculo = sc.next();
-                if(tipovehiculo.equals("moto")){
+                if(tipovehiculo.equalsIgnoreCase("moto")){
                     Moto m = new Moto(matricula, dni);
-                    numeroplaza=parking.alquilar(m);
+                    System.out.println("Tu plaza es la: " + parking.alquilar(m));
+
                 }
-                if(tipovehiculo.equals("coche")){
+                if(tipovehiculo.equalsIgnoreCase("coche")){
                     System.out.println("Es un coche corto o largo?");
                     tipocoche=sc.next();
                     Coche c = new Coche(matricula,dni, tipocoche);
-                    numeroplaza=parking.alquilar(c);
+                    System.out.println("Tu plaza es la: " + parking.alquilar(c));
                 }
-                System.out.println("Tu plaza es la: " + numeroplaza);
+                
             }
             if(menu==2){
                 System.out.println("Introduce tu plaza: ");
-                numeroplaza=sc.nextInt();
+                numeroplaza=sc.next();
                 resultadobaja=parking.darBaja(numeroplaza);
                 if(resultadobaja==0){
                     System.out.println("Dado de baja correctamente");
@@ -63,8 +64,8 @@ public class GestionParking {
                 }
             }
             if(menu==3){
-                ganancias=parking.ganancias();
-                System.out.println("Total de ganancias: "+ganancias+" €");
+                gananciastotales=parking.ganancias();
+                System.out.println("Total de ganancias: "+gananciastotales+" €");
             }
         } while (menu != 4);
         
