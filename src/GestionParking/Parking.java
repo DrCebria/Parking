@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public class Parking {
 
-    private Map<Integer, Plaza> listaPlaza = new HashMap<>();
+    private Map<String, Plaza> listaPlaza = new HashMap<>();
     private String nombreParking, direccion;
 
     public Parking(String nombreParking) {
@@ -17,37 +17,35 @@ public class Parking {
         Plaza p1 = new Plaza(1, 1);
         p1.setTipov('C');
         Plaza p2 = new Plaza(1, 2);
-        p2.setTipov('C');
+        p2.setTipov('M');        
         Plaza p3 = new Plaza(1, 3);
         p3.setTipov('C');
         Plaza p4 = new Plaza(1, 4);
-        p4.setTipov('C');
+        p4.setTipov('M');
         Plaza p5 = new Plaza(2, 1);
         p5.setTipov('C');
         Plaza p6 = new Plaza(2, 2);
-        p6.setTipov('C');
+        p6.setTipov('M');
         Plaza p7 = new Plaza(2, 3);
         p7.setTipov('C');
         Plaza p8 = new Plaza(2, 4);
         p8.setTipov('M');
-        Coche c1 = new Coche("2653-G", "35597712Z", "Largo");
-        p5.setVehiculo(c1);
-        listaPlaza.put(11, p1);
-        listaPlaza.put(12, p2);
-        listaPlaza.put(13, p3);
-        listaPlaza.put(14, p4);
-        listaPlaza.put(21, p5);
-        listaPlaza.put(22, p6);
-        listaPlaza.put(23, p7);
-        listaPlaza.put(24, p8);
+        listaPlaza.put("11", p1);
+        listaPlaza.put("12", p2);
+        listaPlaza.put("13", p3);
+        listaPlaza.put("14", p4);
+        listaPlaza.put("21", p5);
+        listaPlaza.put("22", p6);
+        listaPlaza.put("23", p7);
+        listaPlaza.put("24", p8);
 
     }
 
-    public Map<Integer, Plaza> getListaPlaza() {
+    public Map<String, Plaza> getListaPlaza() {
         return listaPlaza;
     }
 
-    public void setListaPlaza(Map<Integer, Plaza> listaPlaza) {
+    public void setListaPlaza(Map<String, Plaza> listaPlaza) {
         this.listaPlaza = listaPlaza;
     }
 
@@ -71,11 +69,11 @@ public class Parking {
 vehiculo, buscando una libre y asociarle el vehiculo. El método devolverá el n? de plaza asignada,
 si no hay ninguna plaza libre devolverá null*/
 
-    public Integer alquilar(Vehiculo v) {
-        Iterator<Integer> it = listaPlaza.keySet().iterator();
+    public String alquilar(Vehiculo v) {
+        Iterator<String> it = listaPlaza.keySet().iterator();
 
         while (it.hasNext()) {
-            Integer SNN = it.next();
+            String SNN = it.next();
             Plaza p = listaPlaza.get(SNN);
 
             if (p.getTipov() == 'C' && v instanceof Coche && p.getVehiculo() == null
@@ -91,21 +89,22 @@ si no hay ninguna plaza libre devolverá null*/
 vehiculo borrará ese dato y devolverá 0, en caso contrario devolverá 1 si no existe la plaza ó 2 si
 no estaba ocupada.*/
 
-    public Integer darBaja(Integer numPlaza) {
-        Iterator<Integer> it = listaPlaza.keySet().iterator();
+    public Integer darBaja(String numPlaza) {
+        Iterator<String> it = listaPlaza.keySet().iterator();
         while (it.hasNext()) {
-            Integer SNN = it.next();
+            String SNN = it.next();
             Plaza p = listaPlaza.get(SNN);
             if (numPlaza == SNN) {
+                //si hay un vehículo pon la plaza a null
                 if (p.getVehiculo() != null) {
                     p.setVehiculo(null);
                     return 0;
                 } else {
-                    return 1;
+                    return 2;
                 }
             }
         }
-        return 2;
+        return 1;
 
     }
 /*List<Plaza> listarPlazas(String estado, char tipoVehiculo), generará un listado de plazas
@@ -113,14 +112,14 @@ según el tipo pasado por parámetro (estado será: "libres" u "ocupadas", y tipoVe
     
     public List<Plaza> listarPlazas(String estado, char tipov) {
         List<Plaza> listarPlazas = new ArrayList();
-        Iterator<Integer> it = listaPlaza.keySet().iterator();
+        Iterator<String> it = listaPlaza.keySet().iterator();
         while (it.hasNext()) {
-            Integer SNN = it.next();
+            String SNN = it.next();
             Plaza p = listaPlaza.get(SNN);
-            if (p.getTipov() == tipov && p.getVehiculo() == null && estado.equals("libres")) {
+            if (p.getTipov() == tipov && p.getVehiculo() == null && estado.equalsIgnoreCase("libres")) {
                 listarPlazas.add(p);
             }
-            if (p.getTipov() == tipov && p.getVehiculo() != null && estado.equals("ocupadas")) {
+            if (p.getTipov() == tipov && p.getVehiculo() != null && estado.equalsIgnoreCase("ocupadas")) {
                 listarPlazas.add(p);
             }
         }
@@ -131,10 +130,10 @@ alquiladas, es decir ocupadas. (Para obtenerlas usará el método listarPlazas())*
     public Integer ganancias() {
         int total=0;
         for(Plaza p : listarPlazas("ocupadas", 'M')) {
-            total = total + p.calculaPrecio(p.getVehiculo());
+            total = total + p.precio();
         }
         for(Plaza p : listarPlazas("ocupadas", 'C')) {
-            total = total + p.calculaPrecio(p.getVehiculo());
+            total = total + p.precio();
         }
         
         return total;

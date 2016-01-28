@@ -1,4 +1,3 @@
-
 package GestionParking;
 
 public class Plaza {
@@ -49,18 +48,20 @@ public class Plaza {
      String toString() que visualizará la siguiente información:
      */
 
-    public Integer calculaPrecio(Vehiculo v) {
+    public Integer precio() {
         int precio = 0;
         if (tipov.equals('M')) {
             precio = 25;
         } else {
-            if (v instanceof Coche) {
+//            if (v instanceof Coche) {
+            if (v != null) {
                 Coche c = (Coche) v;
-                if (c.getTipoc().equals("Corto")) {
+                if (c.getTipoc().equalsIgnoreCase("corto")) {
                     precio = 40;
                 } else {
                     precio = 55;
                 }
+//            }
             }
         }
         if (sotano == 2) {
@@ -73,19 +74,17 @@ public class Plaza {
      Precio: 35 euros (solo se mostrará si está ocupada por un vehículo)*/
 
     @Override
-    public String toString(){
-        String text="Sótano: "+sotano+" Num Plaza: " +nplaza;
-        if (v==null){
-            text=text.concat(" No hay vehiculo en esta plaza\n");
-      
+    public String toString() {
+        String text = "Sótano: " + sotano + " Num Plaza: " + nplaza;
+        if (v == null) {
+            text = text.concat(" No hay vehiculo en esta plaza\n");
+
+        } else {
+            text = text.concat(" " + v.toString());
+
         }
-        else{
-            text=text.concat(" "+v.toString());
-            
-        }
-        
-       return text;
+
+        return text;
     }
-        
-    
+
 }

@@ -10,7 +10,7 @@ public class Coche extends Vehiculo{
 
     public Coche( String matricula, String nif_dueno, String tipo) {
         super(matricula, nif_dueno);
-        if (tipo.equals("Corto")|tipo.equals("Largo"))       
+        if (tipo.equalsIgnoreCase("corto")|tipo.equalsIgnoreCase("largo"))       
         this.tipoc = tipo;
     }
 
@@ -20,7 +20,7 @@ public class Coche extends Vehiculo{
 
     public boolean setTipoc(String tipo) {
         boolean a=false;
-        if(tipo.equals("Corto")|tipo.equals("Largo")){
+        if(tipo.equalsIgnoreCase("corto")|tipo.equalsIgnoreCase("largo")){
         this.tipoc = tipo;
         a=true;
         return a;
